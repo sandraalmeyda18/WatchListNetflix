@@ -24,6 +24,4 @@ public abstract class Audiovisual : BaseEntity
     public DateTime ReleaseDate { get; set; }
 
     public Category Category { get; set; }
-
-    public int WatchlistId { get; set; }
 }

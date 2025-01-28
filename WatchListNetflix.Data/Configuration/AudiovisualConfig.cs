@@ -11,7 +11,5 @@ public class AudiovisualConfig : IEntityTypeConfiguration<Audiovisual>
         builder.HasDiscriminator<string>("AudiovisualType")
             .HasValue<Movie>(nameof(Movie))
             .HasValue<Serie>(nameof(Serie));
-
-        builder.HasOne<Watchlist>().WithMany(x => x.Audiovisuals).HasForeignKey(x => x.WatchlistId).OnDelete(DeleteBehavior.Cascade);
     }
 }

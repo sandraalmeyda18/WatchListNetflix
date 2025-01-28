@@ -8,6 +8,5 @@ public class WatchListConfig : IEntityTypeConfiguration<Watchlist>
 {
     public void Configure(EntityTypeBuilder<Watchlist> builder)
     {
-        builder.HasOne<Client>().WithMany(x => x.WatchLists).HasForeignKey(x => x.ClientId).OnDelete(DeleteBehavior.Cascade);
     }
 }

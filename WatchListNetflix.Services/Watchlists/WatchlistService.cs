@@ -29,9 +29,9 @@ public class WatchlistService : CrudService<Watchlist>, IWatchlistService
 
         foreach (var audiovisual in audioviasuals)
         {
-            if (!watchList.Audiovisuals.Any(x => x.Id == audiovisual.Id))
+            if (!watchList.Audiovisuals.Any(x => x.AudiovisualId == audiovisual.Id && x.WatchlistId == watchListId))
             {
-                watchList.Audiovisuals.Add(audiovisual);
+                watchList.Audiovisuals.Add(new WatchlistAudiovisual { WatchlistId = watchList.Id, AudiovisualId = audiovisual.Id});
             }
         }
 
@@ -54,9 +54,11 @@ public class WatchlistService : CrudService<Watchlist>, IWatchlistService
 
         foreach (var audiovisual in audioviasuals)
         {
-            if (watchList.Audiovisuals.Any(x => x.Id == audiovisual.Id))
+            if (watchList.Audiovisuals.Any(x => x.AudiovisualId == audiovisual.Id && x.WatchlistId == watchListId))
             {
-                watchList.Audiovisuals.Remove(audiovisual);
+                var watchlistaudiovisual = watchList.Audiovisuals
+                    .FirstOrDefault(x => x.AudiovisualId == audiovisual.Id && x.WatchlistId == watchListId);
+                watchList.Audiovisuals.Remove(watchlistaudiovisual);
             }
         }
 

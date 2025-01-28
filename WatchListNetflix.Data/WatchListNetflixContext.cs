@@ -18,6 +18,8 @@ public class WatchListNetflixContext : DbContext
 
     public DbSet<Watchlist> Watchlists { get; set; }
 
+    public DbSet<WatchlistAudiovisual> WatchlistAudiovisuals { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

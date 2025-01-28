@@ -11,5 +11,5 @@ public class Watchlist : BaseEntity
 
     public int ClientId { get; set; }
 
-    public ICollection<Audiovisual> Audiovisuals { get; set; }
+    public ICollection<WatchlistAudiovisual> Audiovisuals { get; set; }
 }
