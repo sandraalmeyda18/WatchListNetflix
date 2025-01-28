@@ -1,4 +1,5 @@
 ﻿using WatchListNetflix.Model.Entities;
+using WatchListNetflix.Services.Generic;
 
 namespace WatchListNetflix.Services.Audiovisuals;
 

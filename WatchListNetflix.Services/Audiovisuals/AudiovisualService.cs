@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WatchListNetflix.Data;
 using WatchListNetflix.Model.Entities;
+using WatchListNetflix.Services.Generic;
 
 namespace WatchListNetflix.Services.Audiovisuals;
 
