@@ -2,10 +2,9 @@
 
 public class Serie : Audiovisual
 {
-    /// <summary>
-    /// Duration (minutes)
-    /// </summary>
-    public int Duration { get; set; }
+    public int SeasonsNumber { get; set; }
 
-    public string Director { get; set; }
+    public int EpisodesNumber { get; set; }
+
+    public bool? OnAir { get; set; }
 }

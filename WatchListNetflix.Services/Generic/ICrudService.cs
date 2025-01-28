@@ -1,4 +1,4 @@
-﻿namespace WatchListNetflix.Services;
+﻿namespace WatchListNetflix.Services.Generic;
 
 public interface ICrudService<T> where T : class
 {

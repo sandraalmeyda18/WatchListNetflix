@@ -2,7 +2,7 @@
 using WatchListNetflix.Data;
 using WatchListNetflix.Model.Entities;
 
-namespace WatchListNetflix.Services;
+namespace WatchListNetflix.Services.Generic;
 
 public abstract class CrudService<T> : ICrudService<T> where T : BaseEntity
 {

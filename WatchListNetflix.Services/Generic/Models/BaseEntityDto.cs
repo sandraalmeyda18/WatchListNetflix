@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WatchListNetflix.Model.Entities;
+namespace WatchListNetflix.Services.Generic.Models;
 
-public class BaseEntity
+public class BaseEntityDto
 {
     public int Id { get; set; }
 

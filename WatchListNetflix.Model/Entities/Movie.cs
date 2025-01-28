@@ -2,9 +2,10 @@
 
 public class Movie : Audiovisual
 {
-    public int SeasonsNumber { get; set; }
+    /// <summary>
+    /// Duration (minutes)
+    /// </summary>
+    public int Duration { get; set; }
 
-    public int EpisodesNumber { get; set; }
-
-    public bool? OnAir { get; set; }
+    public string Director { get; set; }
 }
