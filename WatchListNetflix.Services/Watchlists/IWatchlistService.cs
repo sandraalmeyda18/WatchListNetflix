@@ -1,5 +1,8 @@
-﻿namespace WatchListNetflix.Services.Watchlists;
+﻿using WatchListNetflix.Model.Entities;
 
-public interface IWatchlistService
+namespace WatchListNetflix.Services.Watchlists;
+
+public interface IWatchlistService : ICrudService<Watchlist>
 {
+    Task InsertAudiovisual(int watchListId, List<Audiovisual> audioviasuals);
 }
