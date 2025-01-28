@@ -23,15 +23,25 @@ namespace WatchListNetflix.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAudiovisuals()
         {
-            var movies = await _audiovisualService.GetAllAsync();
-            return Ok(movies);
+            var list = await _audiovisualService.GetAllAsync();
+            var dtos = _mapper.Map<List<AudiovisualDto>>(list);
+            return Ok(dtos);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetMovies()
         {
             var movies = await _audiovisualService.GetMovies();
-            return Ok(movies);
+            var dtos = _mapper.Map<List<MovieDto>>(movies);
+            return Ok(dtos);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetSeries()
+        {
+            var serie = await _audiovisualService.GetMovies();
+            var dtos = _mapper.Map<List<SerieDto>>(serie);
+            return Ok(dtos);
         }
 
         [HttpGet("{id}")]
