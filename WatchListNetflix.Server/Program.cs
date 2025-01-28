@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using WatchListNetflix.Data;
 using WatchListNetflix.Model.Entities;
 using WatchListNetflix.Services.Audiovisuals;
+using WatchListNetflix.Services.AutoMappers;
+using WatchListNetflix.Services.Mappers;
 using WatchListNetflix.Services.Watchlists;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,11 @@ builder.Services.AddDbContext<WatchListNetflixContext>(options
 
 builder.Services.AddScoped<IAudiovisualService, AudiovisualService>();
 builder.Services.AddScoped<IWatchlistService, WatchlistService>();
+
+//Add AutoMappers
+builder.Services.AddAutoMapper(typeof(WatchlistAutomappers));
+builder.Services.AddAutoMapper(typeof(AudiovisualAutomapper));
+builder.Services.AddAutoMapper(typeof(UserAutomappers));
 
 // Add services to the container.
 

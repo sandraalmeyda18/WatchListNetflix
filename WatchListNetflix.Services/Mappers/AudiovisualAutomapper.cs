@@ -12,6 +12,12 @@ public class AudiovisualAutomapper : Profile
         CreateMap<Audiovisual, AudiovisualDto>()
             .ForMember(dest => dest.AudiovisualType, opt => opt.MapFrom(src => src.GetType().Name))
             .ReverseMap();
+        CreateMap<Audiovisual, AddAudiovisualDto>()
+            .ForMember(dest => dest.AudiovisualType, opt => opt.MapFrom(src => src.GetType().Name))
+            .ReverseMap();
+        CreateMap<Audiovisual, UpdateAudiovisualDto>()
+            .ForMember(dest => dest.AudiovisualType, opt => opt.MapFrom(src => src.GetType().Name))
+            .ReverseMap();
 
         CreateMap<Movie, MovieDto>().IncludeBase<Audiovisual, AudiovisualDto>().ReverseMap();
         CreateMap<Serie, SerieDto>().IncludeBase<Audiovisual, AudiovisualDto>().ReverseMap();

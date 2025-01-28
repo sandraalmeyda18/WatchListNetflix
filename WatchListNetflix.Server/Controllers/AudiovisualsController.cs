@@ -6,7 +6,7 @@ using WatchListNetflix.Services.Audiovisuals.Models;
 
 namespace WatchListNetflix.Server.Controllers
 {
-    [Route("api/Audiovisuals")]
+    [Route("api/audiovisuals")]
     [ApiController]
     public class MoviesController : ControllerBase
     {
@@ -21,6 +21,7 @@ namespace WatchListNetflix.Server.Controllers
 
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAudiovisuals()
         {
             var list = await _audiovisualService.GetAllAsync();
@@ -28,7 +29,7 @@ namespace WatchListNetflix.Server.Controllers
             return Ok(dtos);
         }
 
-        [HttpGet]
+        [HttpGet("GetMovies")]
         public async Task<IActionResult> GetMovies()
         {
             var movies = await _audiovisualService.GetMovies();
@@ -36,7 +37,7 @@ namespace WatchListNetflix.Server.Controllers
             return Ok(dtos);
         }
 
-        [HttpGet]
+        [HttpGet("GetSeries")]
         public async Task<IActionResult> GetSeries()
         {
             var serie = await _audiovisualService.GetMovies();
