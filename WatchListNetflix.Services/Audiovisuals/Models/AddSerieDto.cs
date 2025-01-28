@@ -1,6 +1,6 @@
-﻿namespace WatchListNetflix.Model.Entities;
+﻿namespace WatchListNetflix.Services.Audiovisuals.Models;
 
-public class Serie : Audiovisual
+public class AddSerieDto : AddAudiovisualDto
 {
     public int SeasonsNumber { get; set; }
 

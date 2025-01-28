@@ -1,16 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WatchListNetflix.Model.Entities;
 
-namespace WatchListNetflix.Model.Entities;
+namespace WatchListNetflix.Services.Audiovisuals.Models;
 
-public enum Category
-{
-    None,
-    Suspense,
-    Family,
-    Action
-}
-
-public abstract class Audiovisual : BaseEntity
+public class AddAudiovisualDto
 {
     [Required]
     [MinLength(10, ErrorMessage = "The title does not have the minimum number of characters required")]
@@ -24,4 +22,6 @@ public abstract class Audiovisual : BaseEntity
     public DateTime ReleaseDate { get; set; }
 
     public Category Category { get; set; }
+
+    public string AudiovisualType { get; set; }
 }

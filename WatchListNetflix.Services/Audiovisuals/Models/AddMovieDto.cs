@@ -1,6 +1,6 @@
-﻿namespace WatchListNetflix.Model.Entities;
+﻿namespace WatchListNetflix.Services.Audiovisuals.Models;
 
-public class Movie : Audiovisual
+public class AddMovieDto : AddAudiovisualDto
 {
     /// <summary>
     /// Duration (minutes)

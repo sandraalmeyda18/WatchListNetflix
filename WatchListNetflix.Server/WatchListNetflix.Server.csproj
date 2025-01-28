@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>9.0.1</Version>
     </PackageReference>
@@ -26,6 +27,8 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\WatchListNetflix.DataAccess\WatchListNetflix.Data.csproj" />
+    <ProjectReference Include="..\WatchListNetflix.Data\WatchListNetflix.Data.csproj" />
+    <ProjectReference Include="..\WatchListNetflix.Services\WatchListNetflix.Services.csproj" />
   </ItemGroup>
 
 </Project>

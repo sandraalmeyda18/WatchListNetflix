@@ -9,7 +9,9 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "watchlistnetflix.client", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchListNetflix.Model", "WatchListNetflix.Model\WatchListNetflix.Model.csproj", "{82352765-E4D1-47C5-B7A9-2C4513706CBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchListNetflix.Data", "WatchListNetflix.DataAccess\WatchListNetflix.Data.csproj", "{FD63A32A-30DE-4780-A6CC-F7D845511AD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchListNetflix.Data", "WatchListNetflix.Data\WatchListNetflix.Data.csproj", "{FD63A32A-30DE-4780-A6CC-F7D845511AD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchListNetflix.Services", "WatchListNetflix.Services\WatchListNetflix.Services.csproj", "{15BB71F2-1BAB-458B-AD13-D98BB91EE1D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{FD63A32A-30DE-4780-A6CC-F7D845511AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD63A32A-30DE-4780-A6CC-F7D845511AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD63A32A-30DE-4780-A6CC-F7D845511AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15BB71F2-1BAB-458B-AD13-D98BB91EE1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15BB71F2-1BAB-458B-AD13-D98BB91EE1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15BB71F2-1BAB-458B-AD13-D98BB91EE1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15BB71F2-1BAB-458B-AD13-D98BB91EE1D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
