@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WatchListNetflix.DataAccess\WatchListNetflix.Data.csproj" />
+    <ProjectReference Include="..\WatchListNetflix.Data\WatchListNetflix.Data.csproj" />
     <ProjectReference Include="..\WatchListNetflix.Model\WatchListNetflix.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Audiovisuals\Models\" />
+    <Folder Include="Watchlists\Models\" />
   </ItemGroup>
 
 </Project>
