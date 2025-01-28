@@ -30,8 +30,4 @@
     <ProjectReference Include="..\WatchListNetflix.Services\WatchListNetflix.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
