@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WatchListNetflix.Data;
 using WatchListNetflix.Model.Entities;
 
@@ -20,12 +15,14 @@ public class AudiovisualService : CrudService<Audiovisual>, IAudiovisualService
 
     public async Task<ICollection<Movie>> GetMovies()
     {
-        throw new NotImplementedException();
+        var audiovisuals = await GetAllAsync();
+        return audiovisuals.OfType<Movie>().ToList();
     }
 
-    public Task<List<Serie>> GetSeries()
+    public async Task<ICollection<Serie>> GetSeries()
     {
-        throw new NotImplementedException();
+        var audiovisuals = await GetAllAsync();
+        return audiovisuals.OfType<Serie>().ToList();
     }
 
     public async Task<List<Audiovisual>> SearchAudiovisuals(string title = null, string tipo = null, DateTime? startReleaseDate = null, Category? category = null, int page = 1,
@@ -38,13 +35,13 @@ public class AudiovisualService : CrudService<Audiovisual>, IAudiovisualService
 
         if (!string.IsNullOrEmpty(tipo))
             query = query.Where(a => EF.Property<string>(a, "AudiovisualType") == tipo);
-        
+
         if (startReleaseDate is not null)
         {
             query = query.Where(a => a.ReleaseDate >= startReleaseDate);
         }
 
-        if(category is not null)
+        if (category is not null)
         {
             query = query.Where(a => a.Category.Equals(category));
         }
