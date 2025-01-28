@@ -23,4 +23,26 @@ public class WatchListNetflixContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
     }
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        var entries = ChangeTracker
+           .Entries()
+           .Where(e => e.Entity is BaseEntity && (e.State == EntityState.Added || e.State == EntityState.Modified));
+
+        foreach (var entry in entries)
+        {
+            var entity = (BaseEntity)entry.Entity;
+
+            // If it is a new record, set the creation date
+            if (entry.State == EntityState.Added)
+            {
+                entity.CreatedAt = DateTime.Now;
+            }
+
+            // Always update the update date
+            entity.UpdatedAt = DateTime.UtcNow;
+        }
+        return base.SaveChangesAsync(cancellationToken);
+    }
 }
