@@ -1,0 +1,6 @@
+@WatchListNetflix.Server_HostAddress = http://localhost:5229
+
+GET {{WatchListNetflix.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
