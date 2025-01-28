@@ -5,5 +5,7 @@ namespace WatchListNetflix.Services.Watchlists;
 
 public interface IWatchlistService : ICrudService<Watchlist>
 {
-    Task InsertAudiovisual(int watchListId, List<Audiovisual> audioviasuals);
+    Task InsertAudiovisual(int watchListId, List<int> audioviasualIds);
+
+    Task RemoveAudiovisual(int watchListId, List<int> audioviasualIds);
 }

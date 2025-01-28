@@ -14,7 +14,11 @@ public class WatchlistService : CrudService<Watchlist>, IWatchlistService
         _db = db;
     }
 
-    public async Task InsertAudiovisual(int watchListId, List<Audiovisual> audioviasuals)
+    public override async Task<List<Watchlist>> GetAllAsync()
+    {
+        return await _db.Set<Watchlist>().Include(x => x.Audiovisuals).ToListAsync();
+    }
+    public async Task InsertAudiovisual(int watchListId, List<int> audioviasualIds)
     {
         var watchList = _db.Set<Watchlist>().Include(x => x.Audiovisuals).FirstOrDefault();
 
@@ -23,23 +27,23 @@ public class WatchlistService : CrudService<Watchlist>, IWatchlistService
             throw new Exception($"The {nameof(Watchlist)} does not exist");
         }
 
-        if (audioviasuals is null || !audioviasuals.Any()) 
+        if (audioviasualIds is null || !audioviasualIds.Any()) 
         {
             throw new ArgumentNullException($"The list of {nameof(Serie)} or {nameof(Movie)} is empty");
         }
 
-        foreach (var audiovisual in audioviasuals)
+        foreach (var audiovisualId in audioviasualIds)
         {
-            if (!watchList.Audiovisuals.Any(x => x.AudiovisualId == audiovisual.Id && x.WatchlistId == watchListId))
+            if (!watchList.Audiovisuals.Any(x => x.AudiovisualId == audiovisualId && x.WatchlistId == watchListId))
             {
-                watchList.Audiovisuals.Add(new WatchlistAudiovisual { WatchlistId = watchList.Id, AudiovisualId = audiovisual.Id});
+                watchList.Audiovisuals.Add(new WatchlistAudiovisual { WatchlistId = watchList.Id, AudiovisualId = audiovisualId});
             }
         }
 
         await SaveChangeAsync();
     }
 
-    public async Task RemoveAudiovisual(int watchListId, List<Audiovisual> audioviasuals)
+    public async Task RemoveAudiovisual(int watchListId, List<int> audioviasualIds)
     {
         var watchList = _db.Set<Watchlist>().Include(x => x.Audiovisuals).FirstOrDefault();
 
@@ -48,17 +52,17 @@ public class WatchlistService : CrudService<Watchlist>, IWatchlistService
             throw new Exception($"The {nameof(Watchlist)} does not exist");
         }
 
-        if (audioviasuals is null || !audioviasuals.Any())
+        if (audioviasualIds is null || !audioviasualIds.Any())
         {
             throw new ArgumentNullException($"The list of {nameof(Serie)} or {nameof(Movie)} is empty");
         }
 
-        foreach (var audiovisual in audioviasuals)
+        foreach (var audiovisualId in audioviasualIds)
         {
-            if (watchList.Audiovisuals.Any(x => x.AudiovisualId == audiovisual.Id && x.WatchlistId == watchListId))
+            if (watchList.Audiovisuals.Any(x => x.AudiovisualId == audiovisualId && x.WatchlistId == watchListId))
             {
                 var watchlistaudiovisual = watchList.Audiovisuals
-                    .FirstOrDefault(x => x.AudiovisualId == audiovisual.Id && x.WatchlistId == watchListId);
+                    .FirstOrDefault(x => x.AudiovisualId == audiovisualId && x.WatchlistId == watchListId);
                 watchList.Audiovisuals.Remove(watchlistaudiovisual);
             }
         }

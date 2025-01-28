@@ -39,7 +39,7 @@ public abstract class CrudService<T> : ICrudService<T> where T : BaseEntity
         }
     }
 
-    public virtual async Task<ICollection<T>> GetAllAsync()
+    public virtual async Task<List<T>> GetAllAsync()
     {
         return await _db.Set<T>().ToListAsync();
     }

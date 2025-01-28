@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WatchListNetflix.Model.Entities;
 
-namespace WatchListNetflix.Model.Entities;
+namespace WatchListNetflix.Services.Watchlists.Models;
 
-public class Watchlist : BaseEntity
+public class AddWatchlistDto
 {
     [Required]
     [MinLength(10, ErrorMessage = "The name does not have the minimum number of characters required")]
@@ -10,8 +11,4 @@ public class Watchlist : BaseEntity
     public string Name { get; set; }
 
     public int UserId { get; set; }
-
-    public User User { get; set; }
-
-    public ICollection<WatchlistAudiovisual> Audiovisuals { get; set; }
 }

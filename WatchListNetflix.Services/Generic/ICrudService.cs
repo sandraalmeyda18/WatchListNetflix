@@ -8,7 +8,7 @@ public interface ICrudService<T> where T : class
 
     Task DeleteAsync(T entity);
 
-    Task<ICollection<T>> GetAllAsync();
+    Task<List<T>> GetAllAsync();
 
     Task<T> GetById(int id);
 
