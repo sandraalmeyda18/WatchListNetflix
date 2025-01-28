@@ -8,7 +8,7 @@ using WatchListNetflix.Services.Watchlists.Models;
 
 namespace WatchListNetflix.Server.Controllers
 {
-    [Route("api/Watctchlist")]
+    [Route("api/watctchlist")]
     [ApiController]
     public class WatchlistController : ControllerBase
     {
@@ -33,6 +33,7 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
             var watchlist = await _watchlistService.GetById(id);
@@ -46,6 +47,7 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] AddWatchlistDto newWatchListDto)
         {
             if (newWatchListDto == null)
@@ -60,6 +62,9 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpPatch]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateWatchListDto updateWatchlistDto)
         {
             if (id != updateWatchlistDto.Id)
@@ -82,6 +87,8 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
             var watchlist = await _watchlistService.GetById(id);
@@ -97,6 +104,9 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpPost("{id}/add-audiovisual")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> AddAudiovisual(int id, [FromBody] List<int> audiovisualIds)
         {
             if (audiovisualIds == null || !audiovisualIds.Any())
@@ -116,6 +126,9 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpDelete("{id}/remove-audiovisuals")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> RemoveAudiovisuals(int id, [FromBody] List<int> audiovisualIds)
         {
             if (audiovisualIds == null || !audiovisualIds.Any())

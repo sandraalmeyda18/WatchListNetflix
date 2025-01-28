@@ -8,12 +8,12 @@ namespace WatchListNetflix.Server.Controllers
 {
     [Route("api/audiovisuals")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class AudiovisualsController : ControllerBase
     {
         private readonly IAudiovisualService _audiovisualService;
         private readonly IMapper _mapper;
 
-        public MoviesController(IAudiovisualService audiovisualService, IMapper mapper)
+        public AudiovisualsController(IAudiovisualService audiovisualService, IMapper mapper)
         {
             _audiovisualService = audiovisualService;
             _mapper = mapper;
@@ -21,7 +21,6 @@ namespace WatchListNetflix.Server.Controllers
 
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAudiovisuals()
         {
             var list = await _audiovisualService.GetAllAsync();
@@ -40,12 +39,13 @@ namespace WatchListNetflix.Server.Controllers
         [HttpGet("GetSeries")]
         public async Task<IActionResult> GetSeries()
         {
-            var serie = await _audiovisualService.GetMovies();
+            var serie = await _audiovisualService.GetSeries();
             var dtos = _mapper.Map<List<SerieDto>>(serie);
             return Ok(dtos);
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
             var audiovisual = await _audiovisualService.GetById(id);
@@ -59,7 +59,8 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] AddAudiovisualDto newAudiovisualDto)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Create([FromBody] AddMovieDto newAudiovisualDto)
         {
             if (newAudiovisualDto == null)
             {
@@ -87,6 +88,8 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpPatch]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateAudiovisualDto updateAudiovisualDto)
         {
             if (id != updateAudiovisualDto.Id)
@@ -122,6 +125,8 @@ namespace WatchListNetflix.Server.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
             var audiovisual = await _audiovisualService.GetById(id);
